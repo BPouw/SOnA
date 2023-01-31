@@ -17,8 +17,8 @@ namespace Domain
         public double CalculatePrice()
         {
             int amountOfTickets = this.movieTickets.Count;
-            bool secondFree = isSecondTicketForFree();
-            bool groupDiscount = isGroupDiscount(amountOfTickets);
+            bool secondFree = IsSecondTicketForFree();
+            bool groupDiscount = IsGroupDiscount(amountOfTickets);
 
             return GeneratePrice(secondFree, groupDiscount, amountOfTickets);
         }
