@@ -20,10 +20,10 @@ namespace Domain
             bool secondFree = isSecondTicketForFree();
             bool groupDiscount = isGroupDiscount(amountOfTickets);
 
-            return calculatePrice(secondFree, groupDiscount, amountOfTickets);
+            return GeneratePrice(secondFree, groupDiscount, amountOfTickets);
         }
 
-        private bool isSecondTicketForFree()
+        private bool IsSecondTicketForFree()
         {
             if (this.isStudentOrder)
             {
@@ -42,7 +42,7 @@ namespace Domain
             return true;
         }
 
-        private bool isGroupDiscount(int amountOfTickets)
+        private bool IsGroupDiscount(int amountOfTickets)
         {
             if (this.isStudentOrder)
             {
@@ -66,7 +66,7 @@ namespace Domain
             return false;
         }
 
-        private double calculatePrice(bool secondTicketFree, bool discount, int amountOfTickets)
+        private double GeneratePrice(bool secondTicketFree, bool discount, int amountOfTickets)
         {
             double totalPrice = 0;
 
