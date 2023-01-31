@@ -7,11 +7,12 @@ namespace SOnA.Controllers;
 [Route("[controller]")]
 public class TicketController : ControllerBase
 {
-	[HttpGet(Name = "GetTickets")]
-	public IEnumerable<MovieTicket> Get ()
+	[HttpGet("/tickets")]
+	public IEnumerable<MovieTicket> GetAll ()
 	{
-		return new List<MovieTicket>
+		return new []
 		{
+			new MovieTicket(1, 1, false, null),
 			new MovieTicket(1, 1, false, null)
 		};
 	}
