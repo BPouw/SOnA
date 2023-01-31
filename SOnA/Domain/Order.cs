@@ -33,11 +33,13 @@ namespace Domain
             switch (exportFormat)
             {
 				case (TicketExportFormat.PLAINTEXT):
+					File.Create($"./file/plaintext/{this.orderNr}");
 					string[] ticketString = movieTickets.Select(obj => obj.ToString()).ToArray();
 					File.WriteAllLines($"./file/plaintext/{this.orderNr}", ticketString);
 					break;
 
 				case (TicketExportFormat.JSON):
+                    File.Create($"./file/plaintext/{this.orderNr}");
                     var jsonString = JsonSerializer.Serialize(movieTickets, _options);
                     File.WriteAllText($"./file/json/{this.orderNr}", jsonString);
 					break;
