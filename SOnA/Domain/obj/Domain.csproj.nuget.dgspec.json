@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/Domain/Domain.csproj": {}
+    "C:\\Users\\wesse\\Documents\\Coding Projects\\SOnA\\SOnA\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/Domain/Domain.csproj": {
+    "C:\\Users\\wesse\\Documents\\Coding Projects\\SOnA\\SOnA\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/Domain/Domain.csproj",
+        "projectUniqueName": "C:\\Users\\wesse\\Documents\\Coding Projects\\SOnA\\SOnA\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/Domain/Domain.csproj",
-        "packagesPath": "/Users/boris.pouw/.nuget/packages/",
-        "outputPath": "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/Domain/obj/",
+        "projectPath": "C:\\Users\\wesse\\Documents\\Coding Projects\\SOnA\\SOnA\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\wesse\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wesse\\Documents\\Coding Projects\\SOnA\\SOnA\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/boris.pouw/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\wesse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
