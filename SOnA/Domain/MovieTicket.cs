@@ -13,5 +13,12 @@ public class MovieTicket
         this.isPremium = isPremium;
         this.movieScreening = movieScreening;
     }
+
+    public double Price()
+    {
+        return this.movieScreening.pricePerSeat;
+    }
+
+
 }
 

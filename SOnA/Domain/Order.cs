@@ -20,7 +20,7 @@ namespace Domain
             bool secondFree = isSecondTicketForFree();
             bool groupDiscount = isGroupDiscount(amountOfTickets);
 
-            return 0;
+            return calculatePrice(secondFree, groupDiscount, amountOfTickets);
         }
 
         private bool isSecondTicketForFree()
@@ -64,7 +64,17 @@ namespace Domain
             }
 
             return false;
+        }
 
+        private double calculatePrice(bool secondTicketFree, bool discount, int amountOfTickets)
+        {
+            double totalPrice = 0;
+            foreach (MovieTicket m in movieTickets)
+            {
+                totalPrice += m.Price();
+            }
+
+            return totalPrice;
         }
     }
 }
