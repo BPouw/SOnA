@@ -7,10 +7,11 @@ namespace Domain
         public bool isStudentOrder { get; private set; }
         public List<MovieTicket> movieTickets { get; private set; }
 
-        public Order(int orderNr, bool isStudentOrder)
+        public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
         {
             this.orderNr = orderNr;
             this.isStudentOrder = isStudentOrder;
+			this.movieTickets = movieTickets;
         }
 
         public double CalculatePrice()
