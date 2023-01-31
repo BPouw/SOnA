@@ -9,8 +9,7 @@ namespace Domain
 		public int orderNr { get; private set; }
 		public bool isStudentOrder { get; private set; }
 		public List<MovieTicket> movieTickets { get; private set; }
-        private static readonly JsonSerializerOptions _options =
-    new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+        private static readonly JsonSerializerOptions _options = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
         public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
 		{
@@ -25,7 +24,7 @@ namespace Domain
 			bool secondFree = IsSecondTicketForFree();
 			bool groupDiscount = IsGroupDiscount(amountOfTickets);
 
-			return GeneratePrice(secondFree, groupDiscount, amountOfTickets);
+			return GeneratePrice(secondFree, groupDiscount);
 		}
 
 		public void Export(TicketExportFormat exportFormat)
@@ -87,7 +86,7 @@ namespace Domain
 			return false;
 		}
 
-		private double GeneratePrice(bool secondTicketFree, bool discount, int amountOfTickets)
+		private double GeneratePrice(bool secondTicketFree, bool discount)
 		{
 			double totalPrice = 0;
 			int premiumPrice = isStudentOrder ? 2 : 3;
