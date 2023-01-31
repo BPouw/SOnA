@@ -3,8 +3,11 @@ namespace Domain
 {
     public class Movie
     {
-        public Movie()
+        private string title { get; set; }
+
+        public Movie(string title)
         {
+            this.title = title;
         }
     }
 }
