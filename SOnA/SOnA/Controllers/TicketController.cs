@@ -10,6 +10,9 @@ public class TicketController : ControllerBase
 	[HttpGet(Name = "GetTickets")]
 	public IEnumerable<MovieTicket> Get ()
 	{
-		return new List<MovieTicket> { new MovieTicket() };
+		return new List<MovieTicket>
+		{
+			new MovieTicket(1, 1, false, null)
+		};
 	}
 }
