@@ -34,12 +34,12 @@ namespace Domain
             {
 				case (TicketExportFormat.PLAINTEXT):
 					string[] ticketString = movieTickets.Select(obj => obj.ToString()).ToArray();
-					File.WriteAllLines($"/file/plaintext/{this.orderNr}", ticketString);
+					File.WriteAllLines($"./file/plaintext/{this.orderNr}", ticketString);
 					break;
 
 				case (TicketExportFormat.JSON):
                     var jsonString = JsonSerializer.Serialize(movieTickets, _options);
-                    File.WriteAllText($"/file/json/{this.orderNr}", jsonString);
+                    File.WriteAllText($"./file/json/{this.orderNr}", jsonString);
 					break;
             }
         }
