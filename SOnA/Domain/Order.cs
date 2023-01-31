@@ -69,9 +69,52 @@ namespace Domain
         private double calculatePrice(bool secondTicketFree, bool discount, int amountOfTickets)
         {
             double totalPrice = 0;
-            foreach (MovieTicket m in movieTickets)
+
+            // second ticket free logica
+
+            if (!secondTicketFree)
             {
-                totalPrice += m.Price();
+                foreach (MovieTicket m in movieTickets)
+                {
+                    totalPrice += m.Price();
+                }
+            } else
+            {
+                bool isEven = false;
+
+                foreach (MovieTicket m in movieTickets)
+                {
+                    if (!isEven)
+                    {
+                        totalPrice += m.Price();
+                    }
+
+                    isEven = !isEven;
+                }
+            }
+
+            //premium calculation
+
+            foreach(MovieTicket m in movieTickets)
+            {
+                if (m.isPremium)
+                {
+                    if (isStudentOrder)
+                    {
+                        totalPrice += 2;
+                    }
+                    else
+                    {
+                        totalPrice += 3;
+                    }
+                }
+            }
+
+
+            // discount calculation
+
+            if (discount) {
+                totalPrice = totalPrice * 0.9;
             }
 
             return totalPrice;
