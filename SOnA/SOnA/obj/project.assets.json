@@ -445,11 +445,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/boris.pouw/Documents/School/SOnA/SOnA/SOnA/SOnA.csproj",
+      "projectUniqueName": "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/SOnA/SOnA.csproj",
       "projectName": "SOnA",
-      "projectPath": "/Users/boris.pouw/Documents/School/SOnA/SOnA/SOnA/SOnA.csproj",
+      "projectPath": "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/SOnA/SOnA.csproj",
       "packagesPath": "/Users/boris.pouw/.nuget/packages/",
-      "outputPath": "/Users/boris.pouw/Documents/School/SOnA/SOnA/SOnA/obj/",
+      "outputPath": "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/SOnA/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/boris.pouw/.nuget/NuGet/NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SGfPGTLt2gyKd8ajXTYqJXC46jORruh9q1lSDU5Wq9Hoysx1/0Pbfwz/kmj14DoDGGVosAz+XLo+J0uii10rIg==",
+  "dgSpecHash": "8g9n7de0MwXwtTkGGH8raH18bJNDBsm8Ogz5j+EPHG3tuw3EJefMskY3VKjYQPmUps0+g3dxt/Lt/XaOhY36HA==",
   "success": true,
-  "projectFilePath": "/Users/boris.pouw/Documents/School/SOnA/SOnA/SOnA/SOnA.csproj",
+  "projectFilePath": "/Users/boris.pouw/Documents/School/SOnA/Coding/SOnA/SOnA/SOnA/SOnA.csproj",
   "expectedPackageFiles": [
     "/Users/boris.pouw/.nuget/packages/microsoft.aspnetcore.openapi/7.0.2/microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
     "/Users/boris.pouw/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

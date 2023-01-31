@@ -1,4 +1,5 @@
 ﻿<Properties StartupConfiguration="{21B504B6-E7F1-4D9D-B12F-3A037AE29DB5}|https">
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.SOnA FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.SOnA PreferredExecutionTarget="/Applications/Microsoft Edge.app" FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Domain FirstBuild="True" />
 </Properties>
