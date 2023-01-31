@@ -19,7 +19,6 @@ namespace Domain
             bool secondFree = isSecondTicketForFree();
             bool groupDiscount = isGroupDiscount(amountOfTickets);
 
-
             return 0;
         }
 
@@ -68,4 +67,3 @@ namespace Domain
         }
     }
 }
-
