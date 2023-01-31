@@ -19,6 +19,11 @@ public class MovieTicket
         return this.movieScreening.pricePerSeat;
     }
 
+    public string ToString()
+    {
+        return $"{this.rowNumber},{this.seatNumber},is premium: {isPremium}, movie: {this.movieScreening}";
+    }
+
 
 }
 

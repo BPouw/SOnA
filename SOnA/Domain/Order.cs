@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace Domain
 {
 	public class Order
@@ -6,8 +9,10 @@ namespace Domain
 		public int orderNr { get; private set; }
 		public bool isStudentOrder { get; private set; }
 		public List<MovieTicket> movieTickets { get; private set; }
+        private static readonly JsonSerializerOptions _options =
+    new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
-		public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
+        public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
 		{
 			this.orderNr = orderNr;
 			this.isStudentOrder = isStudentOrder;
@@ -22,6 +27,22 @@ namespace Domain
 
 			return GeneratePrice(secondFree, groupDiscount, amountOfTickets);
 		}
+
+		public void Export(TicketExportFormat exportFormat)
+        {
+            switch (exportFormat)
+            {
+				case (TicketExportFormat.PLAINTEXT):
+					string[] ticketString = movieTickets.Select(obj => obj.ToString()).ToArray();
+					File.WriteAllLines($"/file/plaintext/{this.orderNr}", ticketString);
+					break;
+
+				case (TicketExportFormat.JSON):
+                    var jsonString = JsonSerializer.Serialize(movieTickets, _options);
+                    File.WriteAllText($"/file/json/{this.orderNr}", jsonString);
+					break;
+            }
+        }
 
 		private bool IsSecondTicketForFree()
 		{
