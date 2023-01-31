@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Domain;
 
 namespace SOnA.Controllers;
 
@@ -6,16 +7,12 @@ namespace SOnA.Controllers;
 [Route("[controller]")]
 public class TicketController : ControllerBase
 {
-	[HttpGet(Name = "GetWeatherForecast")]
-	public IEnumerable<WeatherForecast> Get()
+	[HttpGet(Name = "GetTickets")]
+	public IEnumerable<MovieTicket> Get ()
 	{
-		return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+		return new List<MovieTicket>
 		{
-			Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-			TemperatureC = Random.Shared.Next(-20, 55),
-			Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-		})
-		.ToArray();
+			new MovieTicket(1, 1, false, null)
+		};
 	}
 }
-
