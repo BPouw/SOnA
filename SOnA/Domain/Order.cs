@@ -1,123 +1,98 @@
 ﻿using System;
 namespace Domain
 {
-    public class Order
-    {
-        public int orderNr { get; private set; }
-        public bool isStudentOrder { get; private set; }
-        public List<MovieTicket> movieTickets { get; private set; }
+	public class Order
+	{
+		public int orderNr { get; private set; }
+		public bool isStudentOrder { get; private set; }
+		public List<MovieTicket> movieTickets { get; private set; }
 
-        public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
-        {
-            this.orderNr = orderNr;
-            this.isStudentOrder = isStudentOrder;
+		public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
+		{
+			this.orderNr = orderNr;
+			this.isStudentOrder = isStudentOrder;
 			this.movieTickets = movieTickets;
-        }
+		}
 
-        public double CalculatePrice()
-        {
-            int amountOfTickets = this.movieTickets.Count;
-            bool secondFree = IsSecondTicketForFree();
-            bool groupDiscount = IsGroupDiscount(amountOfTickets);
+		public double CalculatePrice()
+		{
+			int amountOfTickets = this.movieTickets.Count;
+			bool secondFree = IsSecondTicketForFree();
+			bool groupDiscount = IsGroupDiscount(amountOfTickets);
 
-            return GeneratePrice(secondFree, groupDiscount, amountOfTickets);
-        }
+			return GeneratePrice(secondFree, groupDiscount, amountOfTickets);
+		}
 
-        private bool IsSecondTicketForFree()
-        {
-            if (this.isStudentOrder)
-            {
-                return true;
-            }
+		private bool IsSecondTicketForFree()
+		{
+			if (this.isStudentOrder)
+			{
+				return true;
+			}
 
-            foreach(MovieTicket m in movieTickets)
-            {
-                var dayOfWeek = m.movieScreening.dateAndTime.DayOfWeek;
-                if (dayOfWeek == DayOfWeek.Friday || dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
-                {
-                    return false;
-                }
-            }
+			foreach (MovieTicket m in movieTickets)
+			{
+				var dayOfWeek = m.movieScreening.dateAndTime.DayOfWeek;
+				if (dayOfWeek == DayOfWeek.Friday || dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
+				{
+					return false;
+				}
+			}
 
-            return true;
-        }
+			return true;
+		}
 
-        private bool IsGroupDiscount(int amountOfTickets)
-        {
-            if (this.isStudentOrder)
-            {
-                return false;
-            }
+		private bool IsGroupDiscount(int amountOfTickets)
+		{
+			if (this.isStudentOrder)
+			{
+				return false;
+			}
 
-            foreach (MovieTicket m in movieTickets)
-            {
-                var dayOfWeek = m.movieScreening.dateAndTime.DayOfWeek;
-                if (dayOfWeek == DayOfWeek.Friday || dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
-                {
-                    return false;
-                }
-            }
+			foreach (MovieTicket m in movieTickets)
+			{
+				var dayOfWeek = m.movieScreening.dateAndTime.DayOfWeek;
+				if (dayOfWeek == DayOfWeek.Friday || dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
+				{
+					return false;
+				}
+			}
 
-            if (amountOfTickets >= 6)
-            {
-                return true;
-            }
+			if (amountOfTickets >= 6)
+			{
+				return true;
+			}
 
-            return false;
-        }
+			return false;
+		}
 
-        private double GeneratePrice(bool secondTicketFree, bool discount, int amountOfTickets)
-        {
-            double totalPrice = 0;
+		private double GeneratePrice(bool secondTicketFree, bool discount, int amountOfTickets)
+		{
+			double totalPrice = 0;
+			int premiumPrice = isStudentOrder ? 2 : 3;
+			bool isFree = false;
 
-            // second ticket free logica
+			foreach (MovieTicket m in movieTickets)
+			{
+				if (!secondTicketFree && !isFree)
+				{
+					totalPrice += m.Price();
 
-            if (!secondTicketFree)
-            {
-                foreach (MovieTicket m in movieTickets)
-                {
-                    totalPrice += m.Price();
-                }
-            } else
-            {
-                bool isEven = false;
+					if (m.isPremium)
+					{
+						totalPrice += premiumPrice;
+					}
+				}
 
-                foreach (MovieTicket m in movieTickets)
-                {
-                    if (!isEven)
-                    {
-                        totalPrice += m.Price();
-                    }
+				isFree = !isFree;
+			}
 
-                    isEven = !isEven;
-                }
-            }
+			if (discount)
+			{
+				totalPrice *= 0.9;
+			}
 
-            //premium calculation
-
-            foreach(MovieTicket m in movieTickets)
-            {
-                if (m.isPremium)
-                {
-                    if (isStudentOrder)
-                    {
-                        totalPrice += 2;
-                    }
-                    else
-                    {
-                        totalPrice += 3;
-                    }
-                }
-            }
-
-
-            // discount calculation
-
-            if (discount) {
-                totalPrice = totalPrice * 0.9;
-            }
-
-            return totalPrice;
-        }
-    }
+			return totalPrice;
+		}
+	}
 }
