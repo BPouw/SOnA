@@ -3,9 +3,9 @@ namespace Domain
 {
     public class MovieScreening
     {
-        private DateTime dateAndTime { get; set; }
-        private double pricePerSeat { get; set; }
-        private Movie movie { get; set; }
+        public DateTime dateAndTime { get; private set; }
+        public double pricePerSeat { get; private set; }
+        public Movie movie { get; private set; }
 
         public MovieScreening(DateTime dateAndTime, double pricePerSeat, Movie movie)
         {

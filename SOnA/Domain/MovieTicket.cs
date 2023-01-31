@@ -1,10 +1,10 @@
 ﻿namespace Domain;
 public class MovieTicket
 {
-    private int rowNumber { get; set; }
-    private int seatNumber { get; set; }
-    private bool isPremium { get; set; }
-    private MovieScreening movieScreening { get; set; }
+    public int rowNumber { get; private set; }
+    public int seatNumber { get; private set; }
+    public bool isPremium { get; private set; }
+    public MovieScreening movieScreening { get; private set; }
 
     public MovieTicket(int rowNumber, int seatNumber, bool isPremium, MovieScreening movieScreening)
     {
