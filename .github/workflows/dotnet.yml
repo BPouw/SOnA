@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 7.0.x
     - name: Restore dependencies
-      run: dotnet restore .\SOnA\
+      run: dotnet restore ./SOnA/SOnA.sln
     - name: Build
-      run: dotnet build .\SOnA\SOnA\SOnA.csproj --no-restore
+      run: dotnet build ./SOnA/SOnA/SOnA.csproj --no-restore
     - name: Test
-      run: dotnet test .\SOnA\Test\Test.csproj --no-build --verbosity normal
+      run: dotnet test ./SOnA/Test/Test.csproj --no-build --verbosity normal
