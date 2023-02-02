@@ -9,9 +9,9 @@ namespace Domain
 		public int orderNr { get; private set; }
 		public bool isStudentOrder { get; private set; }
 		public List<MovieTicket> movieTickets { get; private set; }
-        private static readonly JsonSerializerOptions _options = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+		private static readonly JsonSerializerOptions _options = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
-        public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
+		public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
 		{
 			this.orderNr = orderNr;
 			this.isStudentOrder = isStudentOrder;
@@ -28,20 +28,20 @@ namespace Domain
 		}
 
 		public void Export(TicketExportFormat exportFormat)
-        {
-            switch (exportFormat)
-            {
+		{
+			switch (exportFormat)
+			{
 				case (TicketExportFormat.PLAINTEXT):
 					string[] ticketString = movieTickets.Select(obj => obj.ToString()).ToArray();
 					File.WriteAllLines($"./file/plaintext/{this.orderNr}.txt", ticketString);
 					break;
 
 				case (TicketExportFormat.JSON):
-                    var jsonString = JsonSerializer.Serialize(movieTickets, _options);
-                    File.WriteAllText($"./file/json/{this.orderNr}.json", jsonString);
+					var jsonString = JsonSerializer.Serialize(movieTickets, _options);
+					File.WriteAllText($"./file/json/{this.orderNr}.json", jsonString);
 					break;
-            }
-        }
+			}
+		}
 
 		private bool IsSecondTicketForFree()
 		{
@@ -94,17 +94,20 @@ namespace Domain
 
 			foreach (MovieTicket m in movieTickets)
 			{
-				if (!secondTicketFree && !isFree)
+				if (!isFree)
 				{
 					totalPrice += m.Price();
-
-					if (m.isPremium)
-					{
-						totalPrice += premiumPrice;
-					}
 				}
 
-				isFree = !isFree;
+				if (m.isPremium)
+				{
+					totalPrice += premiumPrice;
+				}
+
+				if (secondTicketFree)
+				{
+					isFree = !isFree;
+				}
 			}
 
 			if (discount)
