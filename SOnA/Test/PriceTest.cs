@@ -38,6 +38,34 @@ namespace Test
             //Assert
             Assert.Equal(27, price);
 		}
+
+		[Fact]
+        public void Premium_Non_Student_Adds_Correct_Fee()
+		{
+            //Arrange
+            Order or = fake.GetPremiumDefaultWeekendOrder();
+
+            //Act
+            double price = or.CalculatePrice();
+
+            //Assert
+            Assert.Equal(13, price);
+		}
+
+		[Fact]
+        public void Premium_Student_Adds_Correct_Fee()
+		{
+            //Arrange
+            Order or = fake.GetPremiumStudentWeekendOrder();
+
+            //Act
+            double price = or.CalculatePrice();
+
+            //Assert
+            Assert.Equal(12, price);
+		}
+
+
     }
 }
 

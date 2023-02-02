@@ -64,7 +64,7 @@ namespace Test
 			List<MovieTicket> movieTickets = new List<MovieTicket>();
 			movieTickets.Add(GetPremiumWeekendMovieTicket());
 
-			return new Order(1, true, movieTickets);
+			return new Order(1, false, movieTickets);
 		}
 
 		public Order GetPremiumStudentWeekdayOrder()
@@ -80,7 +80,7 @@ namespace Test
 			List<MovieTicket> movieTickets = new List<MovieTicket>();
 			movieTickets.Add(GetPremiumWeekdayMovieTicket());
 
-			return new Order(1, true, movieTickets);
+			return new Order(1, false, movieTickets);
 		}
 
 		public Order GetGroupDefaultWeekendOrder()
