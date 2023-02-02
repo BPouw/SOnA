@@ -6,45 +6,45 @@ namespace Test
 	public class Fake
 	{
 		// movie
-		public Movie GetSomeMovie()
+		private Movie GetSomeMovie()
 		{
 			return new Movie("James Bond");
 
 		}
 
 		//movie screening
-		public MovieScreening GetWeekdayMovieScreening()
+		private MovieScreening GetWeekdayMovieScreening()
 		{
 			Movie mov = GetSomeMovie();
 			return new MovieScreening(new DateTime(2023, 2, 1), 10, mov);
 		}
 
-		public MovieScreening GetWeekendMovieScreening()
+		private MovieScreening GetWeekendMovieScreening()
 		{
 			Movie mov = GetSomeMovie();
 			return new MovieScreening(new DateTime(2023, 2, 5), 10, mov);
 		}
 
 		// movie ticket
-		public MovieTicket GetPremiumWeekdayMovieTicket()
+		private MovieTicket GetPremiumWeekdayMovieTicket()
 		{
 			MovieScreening movieScreening = GetWeekdayMovieScreening();
 			return new MovieTicket(12, 10, true, movieScreening);
 		}
 
-		public MovieTicket GetDefaultWeekdayMovieTicket()
+		private MovieTicket GetDefaultWeekdayMovieTicket()
 		{
 			MovieScreening movieScreening = GetWeekdayMovieScreening();
 			return new MovieTicket(12, 10, false, movieScreening);
 		}
 
-		public MovieTicket GetPremiumWeekendMovieTicket()
+		private MovieTicket GetPremiumWeekendMovieTicket()
 		{
 			MovieScreening movieScreening = GetWeekendMovieScreening();
 			return new MovieTicket(12, 10, true, movieScreening);
 		}
 
-		public MovieTicket GetDefaultWeekendMovieTicket()
+		private MovieTicket GetDefaultWeekendMovieTicket()
 		{
 			MovieScreening movieScreening = GetWeekendMovieScreening();
 			return new MovieTicket(12, 10, false, movieScreening);
