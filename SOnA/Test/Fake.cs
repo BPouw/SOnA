@@ -5,9 +5,6 @@ namespace Test
 {
 	public class Fake
 	{
-		public Fake()
-		{
-		}
 
 		public Movie GetSomeMovie()
 		{
