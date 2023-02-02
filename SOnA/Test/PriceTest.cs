@@ -13,7 +13,7 @@ namespace Test
 
 
         [Fact]
-        public void test_gives_discount_when_in_group()
+        public void Group_does_not_get_Discount_on_Weekends()
         {
             //Arrange
             Order or = fake.GetGroupDefaultOrder();
@@ -22,8 +22,8 @@ namespace Test
             double price = or.CalculatePrice();
 
             //Assert
-            Assert.Equal(10, price);
-            
+            Assert.Equal(60, price);
+
         }
     }
 }

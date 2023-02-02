@@ -32,7 +32,7 @@ namespace Test
 
 		public MovieTicket GetDefaultMovieTicket()
 		{
-			MovieScreening movieScreening = GetWeekdayMovieScreening();
+			MovieScreening movieScreening = GetWeekendMovieScreening();
 			return new MovieTicket(12, 10, false, movieScreening);
 		}
 
