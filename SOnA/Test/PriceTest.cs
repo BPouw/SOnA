@@ -13,10 +13,10 @@ namespace Test
 
 
         [Fact]
-        public void Group_does_not_get_Discount_on_Weekends()
+        public void Group_Does_Not_Get_Discount_On_Weekends()
         {
             //Arrange
-            Order or = fake.GetGroupDefaultOrder();
+            Order or = fake.GetGroupDefaultWeekendOrder();
 
             //Act
             double price = or.CalculatePrice();
@@ -25,6 +25,19 @@ namespace Test
             Assert.Equal(60, price);
 
         }
+
+		[Fact]
+        public void Group_Does_Get_Discount_And_Half_Ticket_Off_Outside_Weekends()
+		{
+            //Arrange
+            Order or = fake.GetGroupDefaultWeekdayOrder();
+
+            //Act
+            double price = or.CalculatePrice();
+
+            //Assert
+            Assert.Equal(27, price);
+		}
     }
 }
 
