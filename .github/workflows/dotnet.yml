@@ -28,7 +28,11 @@ jobs:
       - name: Test
         run: dotnet test ./SOnA/Test/Test.csproj
 
-      - name: 'Qodana Scan'
+  scan:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v3
+      - name: Qodana Scan
         uses: JetBrains/qodana-action@main
         env:
             QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
