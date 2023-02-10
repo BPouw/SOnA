@@ -2,8 +2,9 @@ namespace Domain.Behaviour.Discount;
 
 public class TenPercentOff : DiscountBehaviour
 {
-	public decimal returnPrice(decimal originalPrice)
+	// Takse 10% of the price as a discount
+	public decimal returnDiscount()
 	{
-		throw new NotImplementedException();
-	}
+        return (decimal)0.9;
+    }
 }

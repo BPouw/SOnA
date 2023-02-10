@@ -1,9 +1,11 @@
 
+using Domain.Model;
+
 namespace Domain
 {
 	public interface PriceBehaviour
 	{
-		public decimal returnPrice(decimal originalPrice);
+		public decimal returnPremium(List<MovieTicket> movieTickets);
 	}
 }
 

@@ -21,8 +21,8 @@ public class TicketController : ControllerBase
 	public void TriggerExport (TicketExportFormat format)
 	{
 		MovieTicket ticket = new MovieTicket (1, 1, false, new MovieScreening(new DateTime(), 10, new Movie("James Bond")));
-		Order order = new Order(1, false, new List<MovieTicket> () { ticket });
+		// Order order = new Order(1, false, new List<MovieTicket> () { ticket });
 
-		order.Export(format);
+		// order.Export(format);
 	}
 }

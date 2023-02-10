@@ -6,24 +6,31 @@ namespace Domain.Model;
 public class Order
 {
 	public int orderNr { get; private set; }
-	public bool isStudentOrder { get; private set; }
 	public List<MovieTicket> movieTickets { get; private set; }
+
+	public DiscountBehaviour discountBehaviour {get; private set;}
+
+	public PriceBehaviour priceBehaviour {get; private set;}
+
+	public TicketBehaviour ticketBehaviour {get; private set;}
+
 	private static readonly JsonSerializerOptions _options = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
-	public Order(int orderNr, bool isStudentOrder, List<MovieTicket> movieTickets)
+	public Order(int orderNr, List<MovieTicket> movieTickets, TicketBehaviour ticketBehaviour, PriceBehaviour priceBehaviour, DiscountBehaviour discountBehaviour)
 	{
 		this.orderNr = orderNr;
-		this.isStudentOrder = isStudentOrder;
 		this.movieTickets = movieTickets;
+		this.ticketBehaviour = ticketBehaviour;
+		this.priceBehaviour = priceBehaviour;
+		this.discountBehaviour = discountBehaviour;
 	}
 
-	public double CalculatePrice()
+	public decimal CalculatePrice()
 	{
-		int amountOfTickets = this.movieTickets.Count;
-		bool secondFree = IsSecondTicketForFree();
-		bool groupDiscount = IsGroupDiscount(amountOfTickets);
-
-		return GeneratePrice(secondFree, groupDiscount);
+		decimal price = this.ticketBehaviour.returnPrice(movieTickets);
+		price += this.priceBehaviour.returnPremium(movieTickets);
+		price *= this.discountBehaviour.returnDiscount();
+		return price;
 	}
 
 	public void Export(TicketExportFormat exportFormat)
@@ -40,80 +47,5 @@ public class Order
 				File.WriteAllText($"./file/json/{this.orderNr}.json", jsonString);
 				break;
 		}
-	}
-
-	private bool IsSecondTicketForFree()
-	{
-		if (this.isStudentOrder)
-		{
-			return true;
-		}
-
-		foreach (MovieTicket m in movieTickets)
-		{
-			var dayOfWeek = m.movieScreening.dateAndTime.DayOfWeek;
-			if (dayOfWeek == DayOfWeek.Friday || dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
-			{
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	private bool IsGroupDiscount(int amountOfTickets)
-	{
-		if (this.isStudentOrder)
-		{
-			return false;
-		}
-
-		foreach (MovieTicket m in movieTickets)
-		{
-			var dayOfWeek = m.movieScreening.dateAndTime.DayOfWeek;
-			if (dayOfWeek == DayOfWeek.Friday || dayOfWeek == DayOfWeek.Saturday || dayOfWeek == DayOfWeek.Sunday)
-			{
-				return false;
-			}
-		}
-
-		if (amountOfTickets >= 6)
-		{
-			return true;
-		}
-
-		return false;
-	}
-
-	private double GeneratePrice(bool secondTicketFree, bool discount)
-	{
-		double totalPrice = 0;
-		int premiumPrice = isStudentOrder ? 2 : 3;
-		bool isFree = false;
-
-		foreach (MovieTicket m in movieTickets)
-		{
-			if (!isFree)
-			{
-				totalPrice += m.Price();
-			}
-
-			if (m.isPremium)
-			{
-				totalPrice += premiumPrice;
-			}
-
-			if (secondTicketFree)
-			{
-				isFree = !isFree;
-			}
-		}
-
-		if (discount)
-		{
-			totalPrice *= 0.9;
-		}
-
-		return totalPrice;
 	}
 }

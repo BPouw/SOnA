@@ -4,21 +4,12 @@ namespace Domain.Behaviour.Ticket;
 
 public class SecondTicketFree : TicketBehaviour
 {
+	// Selects every second item in the list
+	// Finds the price of every ticket and sums it
 	public decimal returnPrice(List<MovieTicket> movieTickets)
 	{
-		decimal sum = 0;
-        bool free = false;
+		List<MovieTicket> paidTickets = movieTickets.Where((elem, idx) => idx % 2 == 0).ToList();
 
-        foreach(MovieTicket m in movieTickets)
-        {
-            if (!free)
-            {
-                sum += (decimal)m.Price();
-            }
-
-            free = !free;
-        }
-
-        return sum;
+		return paidTickets.Select(m => m.Price()).Sum();
 	}
 }
