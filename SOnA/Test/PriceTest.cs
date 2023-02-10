@@ -52,6 +52,7 @@ namespace Test
             Assert.Equal(13, price);
 		}
 
+
 		[Fact]
         public void Premium_Student_Adds_Correct_Fee()
 		{

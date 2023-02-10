@@ -97,11 +97,11 @@ namespace Domain
 				if (!isFree)
 				{
 					totalPrice += m.Price();
-				}
 
-				if (m.isPremium)
-				{
-					totalPrice += premiumPrice;
+					if (m.isPremium)
+					{
+						totalPrice += premiumPrice;
+					}
 				}
 
 				if (secondTicketFree)
