@@ -32,8 +32,8 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v3
-      
-      - name: Qodana Forward
+
+      - name: Qodana Scan
         uses: JetBrains/qodana-action@main
         env:
             QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}

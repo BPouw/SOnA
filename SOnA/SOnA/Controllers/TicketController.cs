@@ -12,8 +12,8 @@ public class TicketController : ControllerBase
 	{
 		return new []
 		{
-			new MovieTicket(1, 1, false, null),
-			new MovieTicket(1, 1, false, null)
+			new MovieTicket(1, 1, false, new MovieScreening(new DateTime(), 5, new Movie("Test"))),
+			new MovieTicket(1, 1, false, new MovieScreening(new DateTime(), 5, new Movie("Test")))
 		};
 	}
 
