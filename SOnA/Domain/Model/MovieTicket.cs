@@ -1,4 +1,4 @@
-﻿namespace Domain;
+﻿namespace Domain.Model;
 public class MovieTicket
 {
     public int rowNumber { get; private set; }
@@ -14,7 +14,7 @@ public class MovieTicket
         this.movieScreening = movieScreening;
     }
 
-    public double Price()
+    public decimal Price()
     {
         return this.movieScreening.pricePerSeat;
     }
