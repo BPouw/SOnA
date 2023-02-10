@@ -1,5 +1,6 @@
+namespace Domain.Behaviour.Discount;
 
-public class SecondTicketFree : Domain.DiscountBehaviour
+public class TenPercentOff : DiscountBehaviour
 {
 	public decimal returnPrice(decimal originalPrice)
 	{

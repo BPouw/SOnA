@@ -1,5 +1,5 @@
-
-public class FullPrice : Domain.DiscountBehaviour
+namespace Domain.Behaviour.Discount;
+public class FullPrice : DiscountBehaviour
 {
 	public decimal returnPrice(decimal originalPrice)
 	{
