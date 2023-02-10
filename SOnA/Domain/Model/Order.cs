@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using Domain.State;
 
 namespace Domain.Model;
 
@@ -13,6 +14,8 @@ public class Order
 	public PriceBehaviour priceBehaviour {get; private set;}
 
 	public TicketBehaviour ticketBehaviour {get; private set;}
+
+	public OrderState orderState {get; set;}
 
 	private static readonly JsonSerializerOptions _options = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
