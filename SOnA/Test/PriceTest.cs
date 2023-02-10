@@ -1,4 +1,6 @@
-﻿using Domain;
+﻿
+using Domain.Model;
+
 namespace Test
 {
     public class PaymentTest

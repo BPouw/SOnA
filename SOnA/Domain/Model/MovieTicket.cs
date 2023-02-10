@@ -1,4 +1,4 @@
-﻿namespace Domain;
+﻿namespace Domain.Model;
 public class MovieTicket
 {
     public int rowNumber { get; private set; }

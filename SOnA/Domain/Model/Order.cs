@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Domain
-{
+namespace Domain.Model;
+
 	public class Order
 	{
 		public int orderNr { get; private set; }
@@ -117,4 +117,3 @@ namespace Domain
 			return totalPrice;
 		}
 	}
-}
