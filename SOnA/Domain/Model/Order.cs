@@ -19,13 +19,22 @@ public class Order
 
 	private static readonly JsonSerializerOptions _options = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
-	public Order(int orderNr, List<MovieTicket> movieTickets, TicketBehaviour ticketBehaviour, PriceBehaviour priceBehaviour, DiscountBehaviour discountBehaviour)
+	public Order
+	(
+		int orderNr,
+		List<MovieTicket> movieTickets,
+		TicketBehaviour ticketBehaviour,
+		PriceBehaviour priceBehaviour,
+		DiscountBehaviour discountBehaviour,
+		OrderState orderState
+	)
 	{
 		this.orderNr = orderNr;
 		this.movieTickets = movieTickets;
 		this.ticketBehaviour = ticketBehaviour;
 		this.priceBehaviour = priceBehaviour;
 		this.discountBehaviour = discountBehaviour;
+		this.orderState = orderState;
 	}
 
 	public decimal CalculatePrice()

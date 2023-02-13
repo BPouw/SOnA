@@ -18,7 +18,6 @@ public interface OrderState
 	public void cancel(Customer customer)
 	{
 		customer.commPrefs.SendCancelled();
-		Console.WriteLine("you are cancelled");
 	}
 
 	public void pay(Customer customer)
