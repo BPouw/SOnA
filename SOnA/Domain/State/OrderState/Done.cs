@@ -1,3 +1,4 @@
+using Domain.Client;
 using Domain.Exception;
 using Domain.Model;
 
@@ -5,12 +6,19 @@ namespace Domain.State;
 
 public class Done : OrderState
 {
-	public void pay (Customer customer)
+	public Done(List<ISender> observers) : base(observers)
 	{
-		customer.commPrefs.SendConfirmed();
 	}
 
-	public void cancel (Customer customer)
+	public override void pay ()
+	{
+		foreach (ISender sender in observers)
+		{
+			sender.SendConfirmed();
+		}
+	}
+
+	public override void cancel ()
 	{
 		throw new StateException();
 	}

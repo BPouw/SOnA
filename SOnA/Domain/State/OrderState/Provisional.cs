@@ -1,11 +1,19 @@
+using Domain.Client;
 using Domain.Model;
 
 namespace Domain.State;
 
 public class Provisional : OrderState
 {
-	public void remind(Customer customer)
+	public Provisional(List<ISender> observers) : base(observers)
 	{
-		customer.commPrefs.SendReminder();
+	}
+
+	public override void remind()
+	{
+		foreach (ISender sender in observers)
+		{
+			sender.SendReminder();
+		}
 	}
 }
