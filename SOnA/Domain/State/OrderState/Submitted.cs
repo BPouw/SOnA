@@ -1,9 +1,10 @@
+using Domain.Client;
+
 namespace Domain.State;
 
-public class Submitted : OrderState
+public class Submitted : ObservableOrderState
 {
-	public string whatIsMyState()
+	public Submitted(List<ISender> observers) : base(observers)
 	{
-		return "I have been submitted but someone is gonna have to pay for me";
 	}
 }

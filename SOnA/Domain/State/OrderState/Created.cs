@@ -1,9 +1,10 @@
+using Domain.Client;
+
 namespace Domain.State;
 
-public class Created : OrderState
+public class Created : ObservableOrderState
 {
-	public string whatIsMyState()
+	public Created(List<ISender> observers) : base(observers)
 	{
-		return "I have been created";
 	}
 }

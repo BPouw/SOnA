@@ -15,17 +15,26 @@ public class Order
 
 	public TicketBehaviour ticketBehaviour {get; private set;}
 
-	public OrderState orderState {get; set;}
+	public ObservableOrderState orderState {get; set;}
 
 	private static readonly JsonSerializerOptions _options = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
-	public Order(int orderNr, List<MovieTicket> movieTickets, TicketBehaviour ticketBehaviour, PriceBehaviour priceBehaviour, DiscountBehaviour discountBehaviour)
+	public Order
+	(
+		int orderNr,
+		List<MovieTicket> movieTickets,
+		TicketBehaviour ticketBehaviour,
+		PriceBehaviour priceBehaviour,
+		DiscountBehaviour discountBehaviour,
+		ObservableOrderState orderState
+	)
 	{
 		this.orderNr = orderNr;
 		this.movieTickets = movieTickets;
 		this.ticketBehaviour = ticketBehaviour;
 		this.priceBehaviour = priceBehaviour;
 		this.discountBehaviour = discountBehaviour;
+		this.orderState = orderState;
 	}
 
 	public decimal CalculatePrice()

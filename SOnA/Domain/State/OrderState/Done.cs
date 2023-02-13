@@ -1,9 +1,25 @@
+using Domain.Client;
+using Domain.Exception;
+using Domain.Model;
+
 namespace Domain.State;
 
-public class Done : OrderState
+public class Done : ObservableOrderState
 {
-	public string whatIsMyState()
+	public Done(List<ISender> observers) : base(observers)
 	{
-		return "I have been paid for enjoy the show";
+	}
+
+	public override void pay ()
+	{
+		foreach (ISender sender in observers)
+		{
+			sender.SendConfirmed();
+		}
+	}
+
+	public override void cancel ()
+	{
+		throw new StateException();
 	}
 }

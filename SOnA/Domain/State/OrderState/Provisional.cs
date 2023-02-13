@@ -1,9 +1,19 @@
+using Domain.Client;
+using Domain.Model;
+
 namespace Domain.State;
 
-public class Provisional : OrderState
+public class Provisional : ObservableOrderState
 {
-	public string whatIsMyState()
+	public Provisional(List<ISender> observers) : base(observers)
 	{
-		return "I am provisional... pay soon";
+	}
+
+	public override void remind()
+	{
+		foreach (ISender sender in observers)
+		{
+			sender.SendReminder();
+		}
 	}
 }
