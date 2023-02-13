@@ -4,7 +4,7 @@ using Domain.Model;
 
 namespace Domain.State;
 
-public class Done : OrderState
+public class Done : ObservableOrderState
 {
 	public Done(List<ISender> observers) : base(observers)
 	{

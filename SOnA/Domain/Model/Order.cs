@@ -15,7 +15,7 @@ public class Order
 
 	public TicketBehaviour ticketBehaviour {get; private set;}
 
-	public OrderState orderState {get; set;}
+	public ObservableOrderState orderState {get; set;}
 
 	private static readonly JsonSerializerOptions _options = new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
@@ -26,7 +26,7 @@ public class Order
 		TicketBehaviour ticketBehaviour,
 		PriceBehaviour priceBehaviour,
 		DiscountBehaviour discountBehaviour,
-		OrderState orderState
+		ObservableOrderState orderState
 	)
 	{
 		this.orderNr = orderNr;

@@ -4,11 +4,11 @@ using Domain.Client;
 
 namespace Domain.State;
 
-public abstract class OrderState
+public abstract class ObservableOrderState
 {
 	public List<ISender> observers { get; set; }
 
-	public OrderState (List<ISender> observers)
+	public ObservableOrderState (List<ISender> observers)
 	{
 		this.observers = observers;
 	}

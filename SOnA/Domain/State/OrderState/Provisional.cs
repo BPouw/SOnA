@@ -3,7 +3,7 @@ using Domain.Model;
 
 namespace Domain.State;
 
-public class Provisional : OrderState
+public class Provisional : ObservableOrderState
 {
 	public Provisional(List<ISender> observers) : base(observers)
 	{
