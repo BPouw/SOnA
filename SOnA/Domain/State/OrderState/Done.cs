@@ -1,9 +1,17 @@
+using Domain.Exception;
+using Domain.Model;
+
 namespace Domain.State;
 
 public class Done : OrderState
 {
-	public string whatIsMyState()
+	public void pay (Customer customer)
 	{
-		return "I have been paid for enjoy the show";
+		customer.commPrefs.SendConfirmed();
+	}
+
+	public void cancel (Customer customer)
+	{
+		throw new StateException();
 	}
 }

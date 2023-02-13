@@ -1,9 +1,11 @@
+using Domain.Model;
+
 namespace Domain.State;
 
 public class Provisional : OrderState
 {
-	public string whatIsMyState()
+	public void remind(Customer customer)
 	{
-		return "I am provisional... pay soon";
+		customer.commPrefs.SendReminder();
 	}
 }
